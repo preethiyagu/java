@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.StringTokenizer;;
+import java.util.StringTokenizer;
+import java.util.Vector;;
 
 public class TestClass {
 	//find duplicates in an array
@@ -159,12 +161,36 @@ public static void sortHashMap(){
 		}
 	
 	}
-	//common elements between 2 arrays
-	/*	public static void distinctElementsBetween2Arrays(){
-			int [] a1 = {1,3,5,7};
+	// find distinct  elements between 2 arrays
+		public static void distinctElementsBetween2Arrays(){
+			int [] a1 = {1,3,5,7,10,11};
 			int [] a2 = {1,3,5,7,8,9};
-			for(int i=0;i<a1.length)
-		}*/
+			boolean isDistinct = true;
+			for(int i=0;i<a1.length;i++){
+				isDistinct = true;
+				for(int j=0;j<a2.length;j++){
+					if( a1[i] == a2[j]){
+						isDistinct = false;
+						break;
+					}
+				}
+				if(isDistinct)
+					System.out.println("Disticnt elements between 2 arrays"+a1[i]);
+			}
+			
+			for(int i=0;i<a2.length;i++){
+				isDistinct = true;
+				for(int j=0;j<a1.length;j++){
+					if( a2[i] == a1[j]){
+						isDistinct = false;
+						break;
+					}
+				}
+				if(isDistinct)
+					System.out.println("Disticnt elements between 2 arrays"+a2[i]);
+			}
+			
+		}
 	
 	//find distinct elements in an array
 	public static void distinctElementsinArray(){
@@ -210,7 +236,7 @@ public static void sortHashMap(){
 		return true;
 		}
 	
-	
+
 	
 	public static void main(String args []){
 		
@@ -270,9 +296,59 @@ public static void sortHashMap(){
 		fibbonanciSeries();
 		System.out.println("Check prime number"+primeNumberCheck(9));
 		distinctElementsinArray();
+		distinctElementsBetween2Arrays();
+		String name1 = "Preethi";
+		String name2 = "I Live in Sunnyvale";
+		
+		System.out.println("Substring****"+name1.substring(1));
+		System.out.println("Substring****"+name1.substring(1, 4));
+		
+		System.out.println("Substring****"+name2.substring(1));
+		System.out.println("Substring****"+name2.substring(1, 7));
+		
+		//Vectors
+		Vector<String> v = new Vector<String>();
+		Vector<String> v1 = new Vector<String>();
+		//String [] copyArray = new String[v.size()+1];
+		v.add("Java");
+		v.add("J2EE");
+		v.add("C++");
+		v.add("C#");
+		v.add(1, "Spring");
+		List<String> list = new ArrayList<String>();
+		list.add("AA");
+		list.add("BB");
+		v1 = (Vector<String>) v.clone();
+		v.addAll(list);
+		System.out.println(v.containsAll(list));
+		//v.copyInto(copyArray);
+		//System.out.println("CopyArray"+copyArray);
+		Enumeration e =v.elements();
+		while(e.hasMoreElements()){
+			String ename =(String) e.nextElement();
+			System.out.println(ename);
+		}
+		
+		v.remove("Java");
+		System.out.println("VSize"+v.size());
+		System.out.println("VSize"+v1.size());
+		
+		//ArrayList
+		ArrayList<String> arrayList = new ArrayList<String>();
+		arrayList.add("India");
+		arrayList.add("US");
+		arrayList.add("China");
+		arrayList.add("Australia");
+		arrayList.add("Germany");
+		Collections.sort(arrayList);
+		Iterator iterator =arrayList.iterator();
+		
+		while(iterator.hasNext()){
+			System.out.println("arrayListElements"+iterator.next());
+		}
 		
 		
-		
+				
 	}
 	
 	
